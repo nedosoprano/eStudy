@@ -40,6 +40,6 @@ public class CourseController : ControllerBase
     [HttpGet(Name = "GetCourses")]
     public IEnumerable<Course> Get()
     {
-        return Courses;
+        return Courses.ToArray();
     }
 }

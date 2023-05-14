@@ -18,7 +18,7 @@ export class AppComponent {
   title = 'angularapp';
 }
 
-interface Course {
+export interface Course {
   title: string;
   summary: string;
 }

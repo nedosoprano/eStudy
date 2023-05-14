@@ -1,18 +1,3 @@
-﻿<h1 id="tableLabel">Courses</h1>
-
-<p>This component demonstrates fetching data from the server.</p>
-
-<table>
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Summary</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let course of courses">
-            <td>{{ course.title }}</td>
-            <td>{{ course.summary }}</td>
-        </tr>
-    </tbody>
-</table>
+﻿<div class="courses-grid">   
+    <app-course-card *ngFor="let course of courses" [course]="course"></app-course-card>
+</div>  

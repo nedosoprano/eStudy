@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+body { 
+    margin: 0px;
+    font-family: Calibri;
+    background-color: #cbd7e7;
+}
+
+header {
+    background-color: #7394bc;
+    color: #000000;
+    text-align: left;
+}
+
+footer {
+    background-color: #b0c2db;
+    padding: 5px;
+    padding-left: 20px;
+    text-align: left;
+}
+
+app-root {
+    padding: 20px;
+}
+
+.logo {
+    padding-left: 70px;
+    height: 70px;
+    width: 150px;
+}
