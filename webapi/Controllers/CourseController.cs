@@ -1,6 +1,7 @@
 using DataAccess;
 using DataAccess.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 
 namespace webapi.Controllers;
 
@@ -17,9 +18,9 @@ public class CourseController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet(Name = "GetCourses")]
-    public IEnumerable<Course> Get()
-    {
-        return _courseRepository.GetEntities().ToArray();
-    }
+    [HttpGet]
+    public IEnumerable<Course> Get() => _courseRepository.GetEntities().ToArray();
+
+    [HttpGet("{id}")]
+    public Course GetById(int id) => _courseRepository.GetById(id);
 }

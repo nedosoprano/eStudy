@@ -38,5 +38,7 @@ namespace DataAccess.Repositories
         }
 
         public List<Course> GetEntities() => _courses;
+
+        public Course GetById(int id) => _courses.Where(course => course.Id == id).FirstOrDefault();
     }
 }
