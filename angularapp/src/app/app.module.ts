@@ -3,15 +3,20 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { CourseCardComponent } from './course-card/course-card.component';
+import { CourseCardComponent } from './main-page/course-card/course-card.component';
+import { MainPageComponent } from './main-page/main-page.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CourseCardComponent
+    CourseCardComponent,
+    MainPageComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule
+    BrowserModule, 
+    HttpClientModule, 
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
