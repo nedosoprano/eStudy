@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { CourseCardComponent } from './main-page/course-card/course-card.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AppRoutingModule } from './app-routing.module';
+import { StudentCoursePageComponent } from './student-pages/student-course-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CourseCardComponent,
-    MainPageComponent
+    MainPageComponent,
+    StudentCoursePageComponent
   ],
   imports: [
     BrowserModule, 
