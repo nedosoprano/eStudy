@@ -8,3 +8,17 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'angularapp';
 }
+
+export interface EntityBase {
+  id: number,
+  title: string;
+  description: string;
+}
+
+export interface Course extends EntityBase {
+  modules: Set<Module>
+}
+
+export interface Module extends EntityBase {
+  
+}

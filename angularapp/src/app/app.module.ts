@@ -7,13 +7,15 @@ import { CourseCardComponent } from './main-page/course-card/course-card.compone
 import { MainPageComponent } from './main-page/main-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { StudentCoursePageComponent } from './student-pages/student-course-page.component';
+import { SideMenuComponent } from './student-pages/menu/side-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CourseCardComponent,
     MainPageComponent,
-    StudentCoursePageComponent
+    StudentCoursePageComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule, 

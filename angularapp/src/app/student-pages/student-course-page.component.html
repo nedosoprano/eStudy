@@ -1,2 +1,5 @@
-﻿<h1>{{course.id}} - {{course.title}}</h1>
-<p>{{course.summary}}</p>
+﻿<app-side-menu [modules] = "course.modules"></app-side-menu>
+<div class="content">
+    <h1>{{course.id}} - {{course.title}}</h1>
+    <p>{{course.description}}</p>
+</div>

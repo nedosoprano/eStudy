@@ -1,6 +1,6 @@
 ﻿import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Course } from '../main-page/main-page.component';
+import { Course } from '../app.component';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({

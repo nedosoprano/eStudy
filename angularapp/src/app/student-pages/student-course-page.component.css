@@ -1,1 +1,11 @@
-﻿
+﻿app-side-menu {
+    background-color: white;
+    float: left;
+    height: 650px;
+    width: 250px;
+}
+
+.content {
+    padding: 0px 40px;
+    float: left;
+}

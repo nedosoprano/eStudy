@@ -1,5 +1,6 @@
 ﻿import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Course } from '../app.component';
 
 @Component({
   selector: 'app-main-page',
@@ -16,10 +17,4 @@ export class MainPageComponent {
   }
 
   title = 'Courses';
-}
-
-export interface Course {
-    id: number,
-    title: string;
-    summary: string;
 }

@@ -16,10 +16,9 @@ footer {
     padding: 5px;
     padding-left: 20px;
     text-align: left;
-}
-
-app-root {
-    padding: 20px;
+    float: left;
+    clear: both;
+    width: 98.3%;
 }
 
 .logo {
