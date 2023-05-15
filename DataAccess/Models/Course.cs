@@ -1,11 +1,9 @@
-﻿namespace DataAccess
+﻿using DataAccess.Models;
+
+namespace DataAccess
 {
-    public class Course
+    public class Course : EntityBase
     {
-        public int Id { get; set; }
-
-        public string Title { get; set; }
-
-        public string Summary { get; set; }
+        public List<Module> Modules { get; set; }
     }
 }
