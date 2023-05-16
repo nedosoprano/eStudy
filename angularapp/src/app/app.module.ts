@@ -8,6 +8,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { StudentCoursePageComponent } from './student-pages/student-course-page.component';
 import { SideMenuComponent } from './student-pages/menu/side-menu.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SideMenuComponent } from './student-pages/menu/side-menu.component';
     CourseCardComponent,
     MainPageComponent,
     StudentCoursePageComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule, 

@@ -10,7 +10,7 @@ export class AppComponent {
 }
 
 export interface EntityBase {
-  id: number,
+  id: string,
   title: string;
   description: string;
 }
@@ -20,5 +20,9 @@ export interface Course extends EntityBase {
 }
 
 export interface Module extends EntityBase {
+  tasks: Set<Task>
+}
+
+export interface Task extends EntityBase {
   
 }
