@@ -22,5 +22,5 @@ public class CourseController : ControllerBase
     public IEnumerable<Course> Get() => _courseRepository.GetEntities().ToArray();
 
     [HttpGet("{id}")]
-    public Course GetById(int id) => _courseRepository.GetById(id);
+    public Course GetById(string id) => _courseRepository.GetById(id);
 }

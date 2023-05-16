@@ -6,6 +6,6 @@ namespace DataAccess.Repositories
     {
         public List<T> GetEntities();
 
-        public T GetById(int id);
+        public T GetById(string id);
     }
 }

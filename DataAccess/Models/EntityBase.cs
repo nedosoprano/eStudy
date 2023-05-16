@@ -1,10 +1,14 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
 
 namespace DataAccess.Models
 {
     public abstract class EntityBase
     {
-        public int Id { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        [BsonElement("_id")]
+        public string? Id { get; set; }
 
         public string Title { get; set; }
 
