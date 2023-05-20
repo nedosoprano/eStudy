@@ -1,5 +1,5 @@
 ﻿import { Component, Input} from '@angular/core';
-import { Module } from '../../app.component';
+import { Course } from '../../app.component';
 
 @Component({
   selector: 'app-side-menu',
@@ -8,5 +8,5 @@ import { Module } from '../../app.component';
 })
 
 export class SideMenuComponent {
-  @Input() public modules: Set<Module>
+  @Input() public course: Course
 }

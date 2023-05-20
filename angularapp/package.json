@@ -19,10 +19,14 @@
     "@angular/platform-browser": "^15.0.0",
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
+    "@codemirror/lang-javascript": "^6.1.8",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "codemirror": "^6.0.1",
+    "jest-editor-support": "*",
+    "rollup": "^3.22.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.12.0",
-    "jest-editor-support": "*"
+    "zone.js": "~0.12.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.0.5",

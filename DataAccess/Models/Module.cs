@@ -4,6 +4,6 @@ namespace DataAccess.Models
 {
     public class Module : EntityBase
     {
-        public List<Task> Tasks { get; set; }
+        public Task Task { get; set; }
     }
 }

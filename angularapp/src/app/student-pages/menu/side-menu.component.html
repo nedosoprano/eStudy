@@ -1,9 +1,9 @@
 ﻿<ul>
-    <li *ngFor="let module of modules">
-        <a href="https://localhost:4200/">{{module.title}}</a>
+    <li *ngFor="let module of course.modules">
+        <a href="https://localhost:4200/studentcourse/{{course.id}}/module/{{module.id}}">{{module.title}}</a>
         <ul>
-            <li *ngFor="let task of module.tasks">
-                <a href="https://localhost:4200/">{{task.title}}</a>
+            <li>
+                <a href="https://localhost:4200/studentcourse/{{course.id}}/module/{{module.id}}/task">{{module.task.title}}</a>
             </li>
         </ul>
     </li>

@@ -1,0 +1,19 @@
+﻿app-side-menu {
+    background-color: white;
+    float: left;
+    height: 660px;
+    width: 15%;
+}
+
+.content {
+    padding: 0px 40px;
+    float: left;
+    width: 45%;
+}
+
+app-chat {
+    background-color: #b0c2db;
+    float: right;
+    width: 30%;
+    height: 660px;
+}

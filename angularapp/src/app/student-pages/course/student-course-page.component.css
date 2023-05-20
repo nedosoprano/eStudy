@@ -8,12 +8,12 @@
 .content {
     padding: 0px 40px;
     float: left;
-    width: 50%;
+    width: 45%;
 }
 
 app-chat {
     background-color: #b0c2db;
-    float: left;
+    float: right;
     width: 30%;
     height: 660px;
 }

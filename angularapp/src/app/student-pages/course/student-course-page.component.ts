@@ -1,6 +1,6 @@
 ﻿import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { Course } from '../app.component';
+import { Component} from '@angular/core';
+import { Course, Module} from '../../app.component';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
@@ -9,16 +9,14 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./student-course-page.component.css']
 })
 
-export class StudentCoursePageComponent implements OnInit {
+export class StudentCoursePageComponent{
   public course: Course
 
-  constructor(private route: ActivatedRoute, private http: HttpClient){ }
-
-  ngOnInit(): void {
-    var id;
+  constructor(protected route: ActivatedRoute, protected http: HttpClient){ 
+    let id;
 
     this.route.params.subscribe((params: Params) => {
-      id = params['id']
+      id = params['courseId']
     });
     
     this.http.get<Course>('/course/' + id).subscribe(result => {

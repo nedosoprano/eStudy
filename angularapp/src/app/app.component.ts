@@ -16,11 +16,11 @@ export interface EntityBase {
 }
 
 export interface Course extends EntityBase {
-  modules: Set<Module>
+  modules: Module[]
 }
 
 export interface Module extends EntityBase {
-  tasks: Set<Task>
+  task: Task
 }
 
 export interface Task extends EntityBase {
