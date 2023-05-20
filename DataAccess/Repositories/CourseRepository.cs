@@ -1,23 +1,23 @@
 ﻿using System;
-using MongoDB.Driver;
+using DataAccess.Models;
 using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace DataAccess.Repositories
 {
     public class CourseRepository : IRepository<Course>
     {
-        private readonly List<Course> _courses;
+        private readonly IDbContext _dbContext;
 
-        public CourseRepository() 
+        public CourseRepository(IDbContext dbContext) 
         {
-            MongoClient mongoClient = new MongoClient("mongodb://localhost/");
-            IMongoDatabase dbContext = mongoClient.GetDatabase("eStudyDB");
-
-            _courses = dbContext.GetCollection<Course>("Courses").Find(new BsonDocument()).ToList();
+            _dbContext = dbContext;
         }
 
-        public List<Course> GetEntities() => _courses;
+        public List<Course> GetEntities() 
+            => _dbContext.Database.GetCollection<Course>("Courses").Find(new BsonDocument()).ToList();
 
-        public Course GetById(string id) => _courses.Where(course => course.Id == id).FirstOrDefault();
+        public Course GetById(string id) 
+            => _dbContext.Database.GetCollection<Course>("Courses").Find(course => course.Id == id).FirstOrDefault();
     }
 }
