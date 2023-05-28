@@ -2,12 +2,11 @@ using DataAccess;
 using DataAccess.Models;
 using DataAccess.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 
 namespace webapi.Controllers;
 
 [ApiController]
-[Route("")]
+[Route("[controller]")]
 public class CourseController : ControllerBase
 {
     private readonly IRepository<Course> _courseRepository;
@@ -19,13 +18,13 @@ public class CourseController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet("course")]
+    [HttpGet("")]
     public IEnumerable<Course> Get() => _courseRepository.GetEntities().ToArray();
 
-    [HttpGet("course/{courseId}")]
+    [HttpGet("{courseId}")]
     public Course GetById(string courseId) => _courseRepository.GetById(courseId);
 
-    [HttpGet("course/module/{moduleId}")]
+    [HttpGet("module/{moduleId}")]
     public Module GetCourseModuleById(string moduleId)
     {
         var courses = this.Get();

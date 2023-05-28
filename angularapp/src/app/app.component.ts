@@ -16,6 +16,7 @@ export interface EntityBase {
 }
 
 export interface Course extends EntityBase {
+  language: string
   modules: Module[]
 }
 

@@ -11,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IDbContext, DbContext>();
 builder.Services.AddScoped<IRepository<Course>, CourseRepository>();
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 

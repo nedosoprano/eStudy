@@ -1,6 +1,6 @@
 ﻿import { Component} from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute} from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StudentModulePageComponent } from '../module/student-module-page.component';
 
 @Component({
@@ -10,7 +10,19 @@ import { StudentModulePageComponent } from '../module/student-module-page.compon
 })
 
 export class StudentTaskPageComponent extends StudentModulePageComponent{
+  public response: string
+  public error: string
+
   constructor(protected override route: ActivatedRoute, protected override http: HttpClient){ 
     super(route, http);
+  }
+
+  onClick(rawCode: string){
+    var code = "\"" + rawCode.replace(/"/g, `\\"`).replace(/\n/g, '') + "\""
+    var headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    this.http.post<string>('/coderun/' + this.course.language, code, {headers, responseType: 'text' as 'json'}).subscribe(result => {
+        this.response = result;
+    }, error => this.error = "Something went wrong!");
   }
 }
