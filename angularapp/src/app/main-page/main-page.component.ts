@@ -10,8 +10,12 @@ import { Router } from '@angular/router';
 })
 export class MainPageComponent {
   public courses?: Course[];
+  public userRole: string;
 
   constructor(http: HttpClient, router: Router) {
+    var slashIndex = router.url.lastIndexOf("/")
+    this.userRole = router.url.substring(slashIndex + 1, router.url.length)
+
     http.get<Course[]>('/course').subscribe(result => {
       this.courses = result;
     }, error => router.navigate(['en/404']));

@@ -9,11 +9,12 @@ import { Course } from 'src/app/app.component';
 })
 export class CourseCardComponent{
     @Input() course: Course
+    @Input() userRole: string
 
     constructor(private router: Router){     
     }
 
     onStartClick(){
-        this.router.navigate(['/en/studentcourse', this.course.id])
+        this.router.navigate(['/en/course/' + this.userRole, this.course.id])
     }
 }

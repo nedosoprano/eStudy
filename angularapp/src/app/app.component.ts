@@ -1,3 +1,4 @@
+import { HttpStatusCode } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
@@ -32,4 +33,14 @@ export interface User {
   email: string
   name: string
   password: string
+}
+
+export interface SignInResponce {
+  statusCode: HttpStatusCode
+  role: string
+}
+
+export interface Message{
+  userName: string
+  text: string
 }

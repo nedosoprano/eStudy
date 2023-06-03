@@ -1,1 +1,15 @@
-﻿
+﻿<div class="chat">
+    <h2>Chat</h2>
+    <div class="messages">
+        <div class="message" *ngFor="let message of this.messages">
+            <hr>
+            <p>{{message.userName}}</p>
+            <p>{{message.text}}</p>
+            <hr>
+        </div>
+    </div>
+    <div>
+        <textarea type="text" [(ngModel)]="newMessage"></textarea>
+        <button (click)="onClick()">⏎</button>
+    </div>
+</div>

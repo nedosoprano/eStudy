@@ -2,7 +2,7 @@
 import { Component, Input, OnInit} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from '../../app.component';
+import { SignInResponce, User } from '../../app.component';
 
 @Component({
   selector: 'app-login-page',
@@ -35,13 +35,11 @@ export class LogInPageComponent implements OnInit{
     }
     
 
-    this.http.post<HttpStatusCode>('/user/signin', user, {headers}).subscribe(result => {
-      if (result == HttpStatusCode.Ok)
-        this.router.navigate(['/en/main'])
+    this.http.post<SignInResponce>('/user/signin', user, {headers}).subscribe(result => {
+      if (result.statusCode == HttpStatusCode.Ok)
+        this.router.navigate(['/en/main/' + result.role.toLowerCase()])
       else
         this.error = "Wrong credentials!"
-    }, error => this.error = "Something went wrong!");
-
-    
+    }, error => this.error = "Something went wrong!");    
   }
 }

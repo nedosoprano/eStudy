@@ -12,7 +12,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class StudentCoursePageComponent{
   public course: Course
 
-  constructor(protected route: ActivatedRoute, protected http: HttpClient){ 
+  constructor(protected route: ActivatedRoute, protected http: HttpClient){
     let id;
 
     this.route.params.subscribe((params: Params) => {

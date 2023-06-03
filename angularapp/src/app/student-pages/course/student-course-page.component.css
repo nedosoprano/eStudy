@@ -3,6 +3,7 @@
     float: left;
     height: 660px;
     width: 15%;
+    position: relative;
 }
 
 .content {

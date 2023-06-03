@@ -13,11 +13,12 @@ const routes: Routes = [
     { path: 'en', redirectTo: 'login', pathMatch: 'full'},
     { path: 'en/login', component: LogInPageComponent},
     { path: 'en/signup', component: SignUpPageComponent},
-    { path: 'en/main', component: MainPageComponent },
-    { path: 'en/studentcourse', redirectTo: 'main', pathMatch: "full"},
-    { path: 'en/studentcourse/:courseId', component: StudentCoursePageComponent, pathMatch: "full"},
-    { path: 'en/studentcourse/:courseId/module/:moduleId', component: StudentModulePageComponent, pathMatch: "full"},
-    { path: 'en/studentcourse/:courseId/module/:moduleId/task', component: StudentTaskPageComponent, pathMatch: "full"},
+    { path: 'en/main/teacher', component: MainPageComponent },
+    { path: 'en/main/student', component: MainPageComponent },
+    { path: 'en/course', redirectTo: 'main', pathMatch: "full"},
+    { path: 'en/course/student/:courseId', component: StudentCoursePageComponent, pathMatch: "full"},
+    { path: 'en/course/student/:courseId/module/:moduleId', component: StudentModulePageComponent, pathMatch: "full"},
+    { path: 'en/course/student/:courseId/module/:moduleId/task', component: StudentTaskPageComponent, pathMatch: "full"},
     { path: 'en/404', component: NotFoundPageComponent },
     { path: '**', redirectTo: 'en/404' }
 ]

@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using System.Net;
+using webapi.Models;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
 namespace webapi.Controllers
@@ -21,8 +23,10 @@ namespace webapi.Controllers
         }
 
         [HttpPost("signin")]
-        public async Task<HttpStatusCode> SignIn([FromBody] User user)
+        public async Task<SignInResponce> SignIn([FromBody] User user)
         {
+            var responce = new SignInResponce();
+
             if (ModelState.IsValid)
             {
                 var appUser = await _userManager.FindByEmailAsync(user.Email);
@@ -30,12 +34,18 @@ namespace webapi.Controllers
                 {
                     SignInResult signInResult = await _signInManager.PasswordSignInAsync(appUser, user.Password, false, false);
 
+
                     if (signInResult.Succeeded)
-                        return HttpStatusCode.OK;
+                    {
+                        responce.StatusCode = HttpStatusCode.OK;
+
+                        var userRoles = new List<string>(await _userManager.GetRolesAsync(appUser));
+                        responce.Role = userRoles.FirstOrDefault();
+                    }
                 }
             }
 
-            return HttpStatusCode.BadRequest;
+            return responce;
         }
 
         [HttpPost("signup")]
@@ -54,8 +64,7 @@ namespace webapi.Controllers
 
             if (result.Succeeded)
             {
-                await _userManager.AddToRoleAsync(appUser, "Teacher");
-
+                await _userManager.AddToRoleAsync(appUser, "Student");
                 return HttpStatusCode.OK;
             }
 
