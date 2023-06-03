@@ -17,3 +17,8 @@ app-chat {
     width: 30%;
     height: 660px;
 }
+
+hr {    
+    border: 0;
+    border-top: 2px solid black;
+}

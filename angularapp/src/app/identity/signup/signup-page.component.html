@@ -1,0 +1,17 @@
+﻿<div>
+    <form [formGroup]="form" (ngSubmit)="onSignUpClick()">
+        <h1>Sign Up</h1>
+        <h3>Email</h3>
+        <input formControlName="email">
+        <h3>Name</h3>
+        <input formControlName="name">
+        <h3>Password</h3>
+        <input formControlName="password">
+        <button type="submit">Sign Up</button>
+
+        <img src="../../../assets/google.jpg" class="google">
+        
+        <p *ngIf="error" class="error">{{error}}</p>
+
+    </form>
+</div>

@@ -1,0 +1,23 @@
+﻿<div>
+    <form [formGroup]="form" (ngSubmit)="onSignInClick()">
+        <h1>Sign In</h1>
+        <h3>Email</h3>
+        <input formControlName="email">
+        <h3>Name</h3>
+        <input formControlName="name">
+        <h3>Password</h3>
+        <input formControlName="password">
+        <button type="submit">Sign In</button>
+
+        <img src="../../../assets/google.jpg" class="google">
+        
+        <hr>
+
+        <div class="signup-text">
+            Are You want to eStudy? <a href="../../signup">Sign Up</a>
+        </div>
+        
+        <p *ngIf="error" class="error">{{error}}</p>
+
+    </form>
+</div>

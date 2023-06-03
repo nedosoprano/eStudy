@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Text;
 using webapi.Models;
 using JsonConvert = Newtonsoft.Json.JsonConvert;
@@ -7,6 +8,7 @@ namespace webapi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[Authorize]
 public class CodeRunController : ControllerBase
 {
     private readonly HttpClient _httpClient;

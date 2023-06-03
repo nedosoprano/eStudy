@@ -1,12 +1,16 @@
 using DataAccess;
 using DataAccess.Models;
+using DataAccess.Models.Identity;
 using DataAccess.Repositories;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace webapi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[Authorize]
 public class CourseController : ControllerBase
 {
     private readonly IRepository<Course> _courseRepository;

@@ -11,6 +11,10 @@ import { SideMenuComponent } from './student-pages/menu/side-menu.component';
 import { ChatComponent } from './chat/chat.component';
 import { StudentModulePageComponent } from './student-pages/module/student-module-page.component';
 import { StudentTaskPageComponent } from './student-pages/task/student-task-page.component';
+import { LogInPageComponent } from './identity/login/login-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignUpPageComponent } from './identity/signup/signup-page.component';
+import { NotFoundPageComponent } from './notfound/notfound-page.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +25,17 @@ import { StudentTaskPageComponent } from './student-pages/task/student-task-page
     SideMenuComponent,
     ChatComponent,
     StudentModulePageComponent,
-    StudentTaskPageComponent
+    StudentTaskPageComponent,
+    LogInPageComponent,
+    SignUpPageComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule, 
     HttpClientModule, 
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

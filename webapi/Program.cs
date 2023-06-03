@@ -1,31 +1,20 @@
 using DataAccess;
 using DataAccess.Repositories;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
 
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<IDbContext, DbContext>();
-builder.Services.AddScoped<IRepository<Course>, CourseRepository>();
-builder.Services.AddHttpClient();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+namespace webapi
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    public static class Program
+    {
+        /// <param name="args"></param>
+        public static void Main(string[] args)
+            => CreateWebHostBuilder(args)
+                .Build()
+                .Run();
+
+        private static IWebHostBuilder CreateWebHostBuilder(string[] args)
+            => WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>();
+    }
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();

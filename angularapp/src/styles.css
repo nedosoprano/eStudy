@@ -26,3 +26,9 @@ footer {
     height: 70px;
     width: 150px;
 }
+
+.language, .signout {
+    float: right;
+    font-size: 25px;
+    padding: 20px;
+}

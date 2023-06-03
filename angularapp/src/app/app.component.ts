@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angularapp';
+  title = 'eStudy';
 }
 
 export interface EntityBase {
@@ -26,4 +26,10 @@ export interface Module extends EntityBase {
 
 export interface Task extends EntityBase {
   
+}
+
+export interface User {
+  email: string
+  name: string
+  password: string
 }
