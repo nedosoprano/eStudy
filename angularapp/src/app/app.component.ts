@@ -33,11 +33,12 @@ export interface User {
   email: string
   name: string
   password: string
+  role: string
 }
 
 export interface SignInResponce {
   statusCode: HttpStatusCode
-  role: string
+  user: User
 }
 
 export interface Message{

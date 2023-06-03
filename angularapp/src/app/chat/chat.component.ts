@@ -1,5 +1,6 @@
 ﻿import { Component, Input} from '@angular/core';
 import { Message } from '../app.component';
+import { GlobalVariables } from 'src/global-variables';
 
 @Component({
   selector: 'app-chat',
@@ -35,7 +36,7 @@ export class ChatComponent {
 
   onClick(){
     this.messages.push({
-      userName: "Nataliia",
+      userName: GlobalVariables.appUser.name,
       text: this.newMessage
     })
     this.newMessage = ''

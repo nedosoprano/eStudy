@@ -9,8 +9,8 @@ import { SignUpPageComponent } from "./identity/signup/signup-page.component";
 import { NotFoundPageComponent } from "./notfound/notfound-page.component";
 
 const routes: Routes = [
-    { path: '', redirectTo: 'login', pathMatch: 'full'},
-    { path: 'en', redirectTo: 'login', pathMatch: 'full'},
+    { path: '', redirectTo: 'en/login', pathMatch: 'full'},
+    { path: 'en', redirectTo: 'en/login', pathMatch: 'full'},
     { path: 'en/login', component: LogInPageComponent},
     { path: 'en/signup', component: SignUpPageComponent},
     { path: 'en/main/teacher', component: MainPageComponent },

@@ -31,7 +31,8 @@ export class SignUpPageComponent implements OnInit{
     var user: User = {
       email: this.form.value['email'],
       name: this.form.value['name'],
-      password: this.form.value['password']
+      password: this.form.value['password'],
+      role: 'Student'
     }
     
 

@@ -3,6 +3,7 @@ import { Component, Input, OnInit} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SignInResponce, User } from '../../app.component';
+import { GlobalVariables } from 'src/global-variables';
 
 @Component({
   selector: 'app-login-page',
@@ -31,13 +32,15 @@ export class LogInPageComponent implements OnInit{
     var user: User = {
       email: this.form.value['email'],
       name: this.form.value['name'],
-      password: this.form.value['password']
-    }
-    
+      password: this.form.value['password'],
+      role: 'role'
+    }    
 
     this.http.post<SignInResponce>('/user/signin', user, {headers}).subscribe(result => {
-      if (result.statusCode == HttpStatusCode.Ok)
-        this.router.navigate(['/en/main/' + result.role.toLowerCase()])
+      if (result.statusCode == HttpStatusCode.Ok){
+        GlobalVariables.appUser = result.user
+        this.router.navigate(['/en/main/' + result.user.role.toLowerCase()])
+      }
       else
         this.error = "Wrong credentials!"
     }, error => this.error = "Something went wrong!");    

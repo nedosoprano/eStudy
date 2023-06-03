@@ -40,7 +40,13 @@ namespace webapi.Controllers
                         responce.StatusCode = HttpStatusCode.OK;
 
                         var userRoles = new List<string>(await _userManager.GetRolesAsync(appUser));
-                        responce.Role = userRoles.FirstOrDefault();
+                        responce.User = new()
+                        {
+                            Name = appUser.UserName,
+                            Email = appUser.Email,
+                            Password = string.Empty,
+                            Role = userRoles.FirstOrDefault()
+                        };
                     }
                 }
             }
@@ -64,7 +70,7 @@ namespace webapi.Controllers
 
             if (result.Succeeded)
             {
-                await _userManager.AddToRoleAsync(appUser, "Student");
+                await _userManager.AddToRoleAsync(appUser, user.Role);
                 return HttpStatusCode.OK;
             }
 

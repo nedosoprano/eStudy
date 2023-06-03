@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using DataAccess.Models.Identity;
+using System.Net;
 
 namespace webapi.Models
 {
@@ -6,7 +7,7 @@ namespace webapi.Models
     {
         public HttpStatusCode StatusCode { get; set; } = HttpStatusCode.BadRequest;
 
-        public string Role { get; set; } = string.Empty;
+        public User User { get; set; }
 
     }
 }
