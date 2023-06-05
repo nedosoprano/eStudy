@@ -1,7 +1,4 @@
-using DataAccess;
-using DataAccess.Repositories;
 using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
 
 namespace webapi
 {
