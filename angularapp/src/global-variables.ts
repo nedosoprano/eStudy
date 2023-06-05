@@ -2,4 +2,6 @@
 
 export class GlobalVariables {
     public static appUser: User;
+
+    public static language: string;
 }

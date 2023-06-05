@@ -2,12 +2,12 @@
     <li *ngFor="let module of course.modules">
         <a href="en/course/{{this.userRole}}/{{course.id}}/module/{{module.id}}">{{module.title}}</a>
         <ul>
-            <li>
+            <li *ngIf="module.task.title">
                 <a href="en/course/{{this.userRole}}/{{course.id}}/module/{{module.id}}/task">{{module.task.title}}</a>
             </li>
         </ul>
     </li>
-    <li>End of course</li>
+    <li><a href="#">End of course</a></li>
 </ul>
 <div class="navigate-back">
     <a href="en/course/{{this.userRole}}/{{this.course.id}}">Back to course</a>

@@ -1,5 +1,6 @@
 import { HttpStatusCode } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { GlobalVariables } from 'src/global-variables';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'eStudy';
+
+  onENClick(){
+    GlobalVariables.language = 'UA'
+    console.log(GlobalVariables.language)
+  }
+
+  onUAClick(){
+    GlobalVariables.language = 'UA'
+  }
 }
 
 export interface EntityBase {

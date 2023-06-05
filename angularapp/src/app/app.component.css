@@ -1,3 +1,31 @@
 .root {
     position: relative;
 }
+
+header {
+    background-color: #7394bc;
+    color: #000000;
+    text-align: left;
+}
+
+footer {
+    background-color: #b0c2db;
+    padding: 5px;
+    padding-left: 20px;
+    text-align: left;
+    float: left;
+    clear: both;
+    width: 98.3%;
+}
+
+.logo {
+    padding-left: 70px;
+    height: 70px;
+    width: 150px;
+}
+
+.language, .signout {
+    float: right;
+    font-size: 25px;
+    padding: 20px;
+}
