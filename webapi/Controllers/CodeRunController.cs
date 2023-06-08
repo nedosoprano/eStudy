@@ -28,7 +28,7 @@ public class CodeRunController : ControllerBase
         var responseContent = await response.Content.ReadAsStringAsync();
         var responseObject = JsonConvert.DeserializeObject<dynamic>(responseContent);
 
-        return responseObject.stdout;
+        return responseObject.stderr + responseObject.stdout;
     }
 
     private StringContent PrepareRequest(string code, string language)
