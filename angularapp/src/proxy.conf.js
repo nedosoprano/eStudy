@@ -3,7 +3,8 @@ const PROXY_CONFIG = [
     context: [
       "/course",
       "/coderun",
-      "/user"
+      "/user",
+      "/certificate"
     ],
     target: "https://localhost:44396",
     secure: false

@@ -1,16 +1,37 @@
 ﻿<ul>
     <li *ngFor="let module of course.modules">
-        <a routerLink="/en/course/{{this.userRole}}/{{course.id}}/module/{{module.id}}">{{module.title}}</a>
+        <a routerLink="/course/{{this.userRole}}/{{course.id}}/module/{{module.id}}">{{module.title}}</a>
         <ul>
             <li *ngIf="module.task.title">
-                <a routerLink="/en/course/{{this.userRole}}/{{course.id}}/module/{{module.id}}/task">{{module.task.title}}</a>
+                <a routerLink="/course/{{this.userRole}}/{{course.id}}/module/{{module.id}}/task">{{module.task.title}}</a>
             </li>
         </ul>
     </li>
-    <li><a routerLink="#">End of course</a></li>
+    <li *ngIf="this.userRole == 'student'"><a routerLink="/course/{{this.userRole}}/{{course.id}}/final">
+        <ng-template [(ngIf)]="this.isEnglish">
+            <span>End of course</span>
+        </ng-template>
+        <ng-template [(ngIf)]="!this.isEnglish">
+            <span>Кінець курсу</span>
+        </ng-template>
+    </a></li>
 </ul>
 <div class="navigate-back">
-    <a routerLink="/en/course/{{this.userRole}}/{{this.course.id}}">Back to course</a>
+    <a routerLink="/course/{{this.userRole}}/{{this.course.id}}">
+        <ng-template [(ngIf)]="this.isEnglish">
+            <span>Back to course</span>
+        </ng-template>
+        <ng-template [(ngIf)]="!this.isEnglish">
+            <span>Назад до курсу</span>
+        </ng-template>
+    </a>
     <br>
-    <a routerLink="/en/main/{{this.userRole}}">Back to main page</a>
+    <a routerLink="/main/{{this.userRole}}">
+        <ng-template [(ngIf)]="this.isEnglish">
+            <span>Back to main page</span>
+        </ng-template>
+        <ng-template [(ngIf)]="!this.isEnglish">
+            <span>Назад до головної сторінки</span>
+        </ng-template>
+    </a>
 </div>

@@ -1,0 +1,83 @@
+﻿app-side-menu {
+    background-color: white;
+    float: left;
+    height: 660px;
+    width: 16%;
+    position: relative;
+}
+
+.content {
+    padding: 0px 40px;
+    float: left;
+    width: 45%;
+}
+
+app-chat {
+    background-color: #b0c2db;
+    float: right;
+    width: 30%;
+    height: 660px;
+}
+
+hr {    
+    border: 0;
+    border-top: 2px solid black;
+}
+
+.viewer {
+    width: 500px;
+    height: 320px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #000;
+    background-color: #7394bc;
+}
+
+h2 {
+text-align: center;
+margin-bottom: 30px;
+}
+
+.info {
+    margin-bottom: 30px;
+}
+
+.name {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.course {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.date {
+    text-align: center;
+    font-size: 16px;
+}
+
+.signature {
+    text-align: right;
+    margin-top: 50px;
+}
+
+.logo {
+    float: left;
+    height: 70px;
+    width: 150px;
+}
+
+button {
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: #b0c2db;
+    width: 120px;
+    height: 45px;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 3px;
+    float: left;
+}

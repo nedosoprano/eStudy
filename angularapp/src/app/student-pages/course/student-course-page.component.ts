@@ -2,6 +2,7 @@
 import { Component} from '@angular/core';
 import { Course } from '../../app.component';
 import { ActivatedRoute, Params } from '@angular/router';
+import { GlobalVariables } from 'src/global-variables';
 
 @Component({
   selector: 'app-student-course-page',
@@ -22,5 +23,9 @@ export class StudentCoursePageComponent{
     this.http.get<Course>('/course/' + id).subscribe(result => {
       this.course = result;
     }, error => console.error(error));
+  }
+
+  get isEnglish(): boolean {
+    return GlobalVariables.language == 'EN';
   }
 }

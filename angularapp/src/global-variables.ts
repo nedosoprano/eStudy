@@ -3,5 +3,5 @@
 export class GlobalVariables {
     public static appUser: User;
 
-    public static language: string;
+    public static language: string = 'EN';
 }

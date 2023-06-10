@@ -41,4 +41,8 @@ export class ChatComponent {
     })
     this.newMessage = ''
   }
+  
+  get isEnglish(): boolean {
+    return GlobalVariables.language == 'EN';
+  }
 }

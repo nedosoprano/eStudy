@@ -38,7 +38,7 @@ export class SignUpPageComponent implements OnInit{
 
     this.http.post<HttpStatusCode>('/user/signup', user, {headers}).subscribe(result => {
       if (result == HttpStatusCode.Ok)
-        this.router.navigate(['/en/login'])
+        this.router.navigate(['/login'])
       else
         this.error = "Wrong credentials!"
     }, error => this.error = "Something went wrong!");

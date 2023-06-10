@@ -7,20 +7,21 @@ import { StudentTaskPageComponent } from "./student-pages/task/student-task-page
 import { LogInPageComponent } from "./identity/login/login-page.component";
 import { SignUpPageComponent } from "./identity/signup/signup-page.component";
 import { NotFoundPageComponent } from "./notfound/notfound-page.component";
+import { StudentFinalPageComponent } from "./student-pages/final/student-final-page.component";
 
 const routes: Routes = [
-    { path: '', redirectTo: 'en/login', pathMatch: 'full'},
-    { path: 'en', redirectTo: 'en/login', pathMatch: 'full'},
-    { path: 'en/login', component: LogInPageComponent},
-    { path: 'en/signup', component: SignUpPageComponent},
-    { path: 'en/main/teacher', component: MainPageComponent },
-    { path: 'en/main/student', component: MainPageComponent },
-    { path: 'en/course', redirectTo: 'main', pathMatch: "full"},
-    { path: 'en/course/student/:courseId', component: StudentCoursePageComponent, pathMatch: "full"},
-    { path: 'en/course/student/:courseId/module/:moduleId', component: StudentModulePageComponent, pathMatch: "full"},
-    { path: 'en/course/student/:courseId/module/:moduleId/task', component: StudentTaskPageComponent, pathMatch: "full"},
-    { path: 'en/404', component: NotFoundPageComponent },
-    { path: '**', redirectTo: 'en/404' }
+    { path: '', redirectTo: 'login', pathMatch: 'full'},
+    { path: 'login', component: LogInPageComponent},
+    { path: 'signup', component: SignUpPageComponent},
+    { path: 'main/teacher', component: MainPageComponent },
+    { path: 'main/student', component: MainPageComponent },
+    { path: 'course', redirectTo: 'main', pathMatch: "full"},
+    { path: 'course/student/:courseId', component: StudentCoursePageComponent, pathMatch: "full"},
+    { path: 'course/student/:courseId/module/:moduleId', component: StudentModulePageComponent, pathMatch: "full"},
+    { path: 'course/student/:courseId/module/:moduleId/task', component: StudentTaskPageComponent, pathMatch: "full"},
+    { path: 'course/student/:courseId/final', component: StudentFinalPageComponent, pathMatch: "full"},
+    { path: '404', component: NotFoundPageComponent },
+    { path: '**', redirectTo: '404' }
 ]
 
 @NgModule({

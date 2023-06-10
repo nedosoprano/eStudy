@@ -11,12 +11,15 @@ export class AppComponent {
   title = 'eStudy';
 
   onENClick(){
-    GlobalVariables.language = 'UA'
-    console.log(GlobalVariables.language)
+    GlobalVariables.language = 'EN'
   }
 
   onUAClick(){
     GlobalVariables.language = 'UA'
+  }
+
+  get isEnglish(): boolean {
+    return GlobalVariables.language == 'EN';
   }
 }
 

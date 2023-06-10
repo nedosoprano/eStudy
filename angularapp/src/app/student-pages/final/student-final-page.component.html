@@ -1,0 +1,20 @@
+﻿<app-side-menu [course] = "course" userRole="student"></app-side-menu>
+<div class="content">
+    <h1>{{course.title}} - Final page</h1>
+    <hr>
+    <div class="viewer">
+        <h2>Certificate of Completion</h2>
+        <div class="info">
+            <p class="name">{{this.userName}}</p>
+            <p class="course">Java Basics</p>
+            <p class="date">This certificate is awarded to {{this.userName}} for successfully completing the Java Basics.</p>
+        </div>
+        <img class="logo" src="./assets/estudy_logo.png"/>
+        <div class="signature">
+            <p>Nataliia Lynnyk</p>
+            <p>Instructor</p>
+        </div>
+    </div>
+    <button (click)="onClick()">Download</button>
+</div>
+<app-chat></app-chat>

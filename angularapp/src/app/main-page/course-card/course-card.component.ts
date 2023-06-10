@@ -15,6 +15,6 @@ export class CourseCardComponent{
     }
 
     onStartClick(){
-        this.router.navigate(['/en/course/' + this.userRole, this.course.id])
+        this.router.navigate(['/course/' + this.userRole, this.course.id])
     }
 }

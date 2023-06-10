@@ -15,6 +15,7 @@ import { LogInPageComponent } from './identity/login/login-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignUpPageComponent } from './identity/signup/signup-page.component';
 import { NotFoundPageComponent } from './notfound/notfound-page.component';
+import { StudentFinalPageComponent } from './student-pages/final/student-final-page.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NotFoundPageComponent } from './notfound/notfound-page.component';
     StudentTaskPageComponent,
     LogInPageComponent,
     SignUpPageComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    StudentFinalPageComponent
   ],
   imports: [
     BrowserModule, 

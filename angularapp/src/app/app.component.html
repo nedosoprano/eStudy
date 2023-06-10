@@ -1,13 +1,23 @@
 ﻿<header>
     <img class="logo" src="./assets/estudy_logo.png">
-    <a href="/user/signout" class="signout">Sign Out</a>
+    <ng-template [(ngIf)]="this.isEnglish">
+        <a href="/user/signout" class="signout">Sign Out</a>
+    </ng-template>    
+    <ng-template [(ngIf)]="!this.isEnglish">
+        <a href="/user/signout" class="signout">Вихід з системи</a>
+    </ng-template>
     <div class="language">
-        <a href="javascript:onENClick();">EN</a>|<a href="javascript:onUAClick();"> UA</a>
+        <button (click)="onENClick()">EN</button>|<button (click)="onUAClick()">UA</button>
     </div>
     </header>
 <div class="root">
     <router-outlet></router-outlet> 
 </div>
 <footer>
-    <div>@Copyright Nataliia Lynnyk - 2023. All rights reserved</div>
+    <ng-template [(ngIf)]="this.isEnglish">
+        <div>@Copyright Nataliia Lynnyk - 2023. All rights reserved</div>
+    </ng-template>
+    <ng-template [(ngIf)]="!this.isEnglish">
+        <div>@Авторське право Наталія Линник - 2023. Усі права захищено</div>
+    </ng-template>
 </footer>

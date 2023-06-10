@@ -39,7 +39,7 @@ export class LogInPageComponent implements OnInit{
     this.http.post<SignInResponce>('/user/signin', user, {headers}).subscribe(result => {
       if (result.statusCode == HttpStatusCode.Ok){
         GlobalVariables.appUser = result.user
-        this.router.navigate(['/en/main/' + result.user.role.toLowerCase()])
+        this.router.navigate(['/main/' + result.user.role.toLowerCase()])
       }
       else
         this.error = "Wrong credentials!"
