@@ -86,7 +86,7 @@ namespace webapi.Controllers
         {
             await _signInManager.SignOutAsync();
 
-            return Redirect("https://localhost:4200/en/login");
+            return Redirect("https://localhost:4200/login");
         }
     }
 }

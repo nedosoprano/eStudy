@@ -14,7 +14,7 @@ namespace webapi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    //[Authorize]
+    [Authorize]
     public class CertificateController : Controller
     {
         [HttpGet]

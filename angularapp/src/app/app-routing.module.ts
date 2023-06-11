@@ -8,6 +8,8 @@ import { LogInPageComponent } from "./identity/login/login-page.component";
 import { SignUpPageComponent } from "./identity/signup/signup-page.component";
 import { NotFoundPageComponent } from "./notfound/notfound-page.component";
 import { StudentFinalPageComponent } from "./student-pages/final/student-final-page.component";
+import { TeacherCoursePageComponent } from "./teacher-pages/course/teacher-course-page.component";
+import { TeacherEditorPageComponent } from "./teacher-pages/editor/teacher-editor-page.component";
 
 const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -20,6 +22,8 @@ const routes: Routes = [
     { path: 'course/student/:courseId/module/:moduleId', component: StudentModulePageComponent, pathMatch: "full"},
     { path: 'course/student/:courseId/module/:moduleId/task', component: StudentTaskPageComponent, pathMatch: "full"},
     { path: 'course/student/:courseId/final', component: StudentFinalPageComponent, pathMatch: "full"},
+    { path: 'course/teacher/:courseId', component: TeacherCoursePageComponent, pathMatch: "full"},
+    { path: 'course/teacher/:courseId/edit', component: TeacherEditorPageComponent, pathMatch: "full"},
     { path: '404', component: NotFoundPageComponent },
     { path: '**', redirectTo: '404' }
 ]

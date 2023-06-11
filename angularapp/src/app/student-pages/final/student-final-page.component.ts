@@ -28,14 +28,8 @@ export class StudentFinalPageComponent{
   }
 
   onClick(){
-    const fileUrl = '/certificate';
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/pdf',
-      'Accept': 'application/pdf'
-    });
-
-    this.http.get(fileUrl, { responseType: 'blob' }).subscribe((blob: Blob) => {
+    this.http.get('/certificate', { responseType: 'arraybuffer' }).subscribe((data: ArrayBuffer) => {
+      var blob = new  Blob([data], {type: "application/pdf;charset=utf-8"});
       saveAs(blob, 'eStudy-certificate.pdf');
     }, (error) => {
       console.error('An error occurred:', error);

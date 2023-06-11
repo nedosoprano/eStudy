@@ -16,6 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignUpPageComponent } from './identity/signup/signup-page.component';
 import { NotFoundPageComponent } from './notfound/notfound-page.component';
 import { StudentFinalPageComponent } from './student-pages/final/student-final-page.component';
+import { TeacherCoursePageComponent } from './teacher-pages/course/teacher-course-page.component';
+import { TeacherEditorPageComponent } from './teacher-pages/editor/teacher-editor-page.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { StudentFinalPageComponent } from './student-pages/final/student-final-p
     LogInPageComponent,
     SignUpPageComponent,
     NotFoundPageComponent,
-    StudentFinalPageComponent
+    StudentFinalPageComponent,
+    TeacherCoursePageComponent,
+    TeacherEditorPageComponent
   ],
   imports: [
     BrowserModule, 

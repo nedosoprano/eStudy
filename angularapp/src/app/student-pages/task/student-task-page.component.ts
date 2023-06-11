@@ -1,4 +1,4 @@
-﻿import { Component} from '@angular/core';
+import { Component} from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StudentModulePageComponent } from '../module/student-module-page.component';
