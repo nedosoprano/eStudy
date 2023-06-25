@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders, HttpStatusCode } from '@angular/common/http';
 import { Component, ViewChild} from '@angular/core';
-import { Course } from '../../app.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { GlobalVariables } from 'src/global-variables';
 import { saveAs } from 'file-saver-es';
+import { Course } from 'src/app/models/course';
 
 @Component({
   selector: 'app-editor-course-page',
@@ -25,10 +25,6 @@ export class TeacherEditorPageComponent{
     this.http.get<Course>('/course/' + id).subscribe(result => {
       this.course = result;
     }, error => console.error(error));
-  }
-
-  get isEnglish(): boolean {
-    return GlobalVariables.language == 'EN';
   }
 
   onImportClick(){

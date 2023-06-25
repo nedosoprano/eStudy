@@ -1,10 +1,5 @@
 ﻿<div class="chat">
-    <ng-template [(ngIf)]="this.isEnglish">
-        <h2>Chat</h2>
-    </ng-template>
-    <ng-template [(ngIf)]="!this.isEnglish">
-        <h2>Чат</h2>
-    </ng-template>
+    <h2>Chat</h2>
     <div class="messages">
         <div class="message" *ngFor="let message of this.messages">
             <hr>

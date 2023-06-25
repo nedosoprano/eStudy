@@ -1,8 +1,8 @@
 ﻿import { Component} from '@angular/core';
-import { Course, Module } from '../../app.component';
 import { ActivatedRoute, Params } from '@angular/router';
 import { StudentCoursePageComponent } from '../course/student-course-page.component';
 import { HttpClient } from '@angular/common/http';
+import { Module } from 'src/app/models/module';
 
 @Component({
   selector: 'app-student-module-page',

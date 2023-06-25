@@ -1,6 +1,6 @@
-﻿import { Component, Input} from '@angular/core';
-import { Message } from '../app.component';
+﻿import { Component} from '@angular/core';
 import { GlobalVariables } from 'src/global-variables';
+import { Message } from '../models/message';
 
 @Component({
   selector: 'app-chat',
@@ -40,9 +40,5 @@ export class ChatComponent {
       text: this.newMessage
     })
     this.newMessage = ''
-  }
-  
-  get isEnglish(): boolean {
-    return GlobalVariables.language == 'EN';
   }
 }

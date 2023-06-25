@@ -1,6 +1,6 @@
 ﻿import { Component, Input} from '@angular/core';
-import { Course } from '../app.component';
 import { GlobalVariables } from 'src/global-variables';
+import { Course } from '../models/course';
 
 @Component({
   selector: 'app-side-menu',
@@ -11,8 +11,4 @@ import { GlobalVariables } from 'src/global-variables';
 export class SideMenuComponent {
   @Input() public course: Course
   @Input() public userRole: string
-
-  get isEnglish(): boolean {
-    return GlobalVariables.language == 'EN';
-  }
 }

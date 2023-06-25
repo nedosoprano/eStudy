@@ -1,8 +1,8 @@
 ﻿import { HttpClient, HttpHeaders, HttpStatusCode } from '@angular/common/http';
 import { Component} from '@angular/core';
-import { Course } from '../../app.component';
 import { ActivatedRoute, Params } from '@angular/router';
 import { saveAs } from 'file-saver-es';
+import { Course } from 'src/app/models/course';
 import { GlobalVariables } from 'src/global-variables';
 
 @Component({

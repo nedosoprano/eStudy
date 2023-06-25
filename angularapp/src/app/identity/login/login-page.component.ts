@@ -1,8 +1,9 @@
 ﻿import { HttpClient, HttpHeaders, HttpStatusCode } from '@angular/common/http';
-import { Component, Input, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SignInResponce, User } from '../../app.component';
+import { SignInResponce } from 'src/app/models/sign-in-responce';
+import { User } from 'src/app/models/user';
 import { GlobalVariables } from 'src/global-variables';
 
 @Component({

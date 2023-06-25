@@ -1,7 +1,7 @@
 ﻿import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Course } from '../app.component';
 import { Router } from '@angular/router';
+import { Course } from '../models/course';
 
 @Component({
   selector: 'app-main-page',

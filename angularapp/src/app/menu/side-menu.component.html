@@ -8,30 +8,15 @@
         </ul>
     </li>
     <li *ngIf="this.userRole == 'student'"><a routerLink="/course/{{this.userRole}}/{{course.id}}/final">
-        <ng-template [(ngIf)]="this.isEnglish">
-            <span>End of course</span>
-        </ng-template>
-        <ng-template [(ngIf)]="!this.isEnglish">
-            <span>Кінець курсу</span>
-        </ng-template>
+        <span>End of course</span>
     </a></li>
 </ul>
 <div class="navigate-back">
     <a routerLink="/course/{{this.userRole}}/{{this.course.id}}">
-        <ng-template [(ngIf)]="this.isEnglish">
-            <span>Back to course</span>
-        </ng-template>
-        <ng-template [(ngIf)]="!this.isEnglish">
-            <span>Назад до курсу</span>
-        </ng-template>
+        <span>Back to course</span>
     </a>
     <br>
     <a routerLink="/main/{{this.userRole}}">
-        <ng-template [(ngIf)]="this.isEnglish">
-            <span>Back to main page</span>
-        </ng-template>
-        <ng-template [(ngIf)]="!this.isEnglish">
-            <span>Назад до головної сторінки</span>
-        </ng-template>
+        <span>Back to main page</span>
     </a>
 </div>

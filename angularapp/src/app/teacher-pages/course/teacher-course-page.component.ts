@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component} from '@angular/core';
-import { Course } from '../../app.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Course } from 'src/app/models/course';
 import { GlobalVariables } from 'src/global-variables';
 
 @Component({
@@ -23,10 +23,6 @@ export class TeacherCoursePageComponent{
     this.http.get<Course>('/course/' + id).subscribe(result => {
       this.course = result;
     }, error => console.error(error));
-  }
-
-  get isEnglish(): boolean {
-    return GlobalVariables.language == 'EN';
   }
 
   onEditClick(){
