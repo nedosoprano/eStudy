@@ -10,18 +10,21 @@ import { NotFoundPageComponent } from "./notfound/notfound-page.component";
 import { StudentFinalPageComponent } from "./student-pages/final/student-final-page.component";
 import { TeacherCoursePageComponent } from "./teacher-pages/course/teacher-course-page.component";
 import { TeacherEditorPageComponent } from "./teacher-pages/editor/teacher-editor-page.component";
+import { StudentPageComponent } from "./student-pages/student-page.component";
 
 const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full'},
+    { path: 'course', redirectTo: 'main', pathMatch: "full"},
     { path: 'login', component: LogInPageComponent},
     { path: 'signup', component: SignUpPageComponent},
     { path: 'main/teacher', component: MainPageComponent },
     { path: 'main/student', component: MainPageComponent },
-    { path: 'course', redirectTo: 'main', pathMatch: "full"},
-    { path: 'course/student/:courseId', component: StudentCoursePageComponent, pathMatch: "full"},
-    { path: 'course/student/:courseId/module/:moduleId', component: StudentModulePageComponent, pathMatch: "full"},
-    { path: 'course/student/:courseId/module/:moduleId/task', component: StudentTaskPageComponent, pathMatch: "full"},
-    { path: 'course/student/:courseId/final', component: StudentFinalPageComponent, pathMatch: "full"},
+    { path: 'course/student/:courseId', component: StudentPageComponent, children: [
+        { path: 'main', component: StudentCoursePageComponent},
+        { path: 'final', component: StudentFinalPageComponent},
+        { path: 'module/:moduleId', component: StudentModulePageComponent },
+        { path: 'module/:moduleId/task', component: StudentTaskPageComponent},
+    ]},
     { path: 'course/teacher/:courseId', component: TeacherCoursePageComponent, pathMatch: "full"},
     { path: 'course/teacher/:courseId/edit', component: TeacherEditorPageComponent, pathMatch: "full"},
     { path: '404', component: NotFoundPageComponent },

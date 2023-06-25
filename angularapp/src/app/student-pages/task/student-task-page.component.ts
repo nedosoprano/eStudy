@@ -1,7 +1,8 @@
 import { Component} from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Params} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { StudentModulePageComponent } from '../module/student-module-page.component';
+import { GlobalVariables } from 'src/global-variables';
+import { Task } from 'src/app/models/task';
 
 @Component({
   selector: 'app-student-task-page',
@@ -9,19 +10,23 @@ import { StudentModulePageComponent } from '../module/student-module-page.compon
   styleUrls: ['./student-task-page.component.css']
 })
 
-export class StudentTaskPageComponent extends StudentModulePageComponent{
+export class StudentTaskPageComponent{
   public response: string
   public error: string
+  task: Task
 
-  constructor(protected override route: ActivatedRoute, protected override http: HttpClient){ 
-    super(route, http);
+  constructor(private route: ActivatedRoute, private http: HttpClient){ 
+    this.route.params.subscribe((params: Params) => {
+      let id = params['moduleId'];
+      this.task = GlobalVariables.selectedCourse.modules.filter(module => module.id === id)[0].task;
+    });
   }
 
   onClick(rawCode: string){
     var code = "\"" + rawCode.replace(/"/g, `\\"`).replace(/\n/g, '') + "\""
     var headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    this.http.post<string>('/coderun/' + this.course.language, code, {headers, responseType: 'text' as 'json'}).subscribe(result => {
+    this.http.post<string>('/coderun/' + GlobalVariables.selectedCourse.language, code, {headers, responseType: 'text' as 'json'}).subscribe(result => {
         this.response = result;
     }, error => this.error = "Something went wrong!");
   }

@@ -1,5 +1,4 @@
 ﻿import { Component, Input} from '@angular/core';
-import { GlobalVariables } from 'src/global-variables';
 import { Course } from '../models/course';
 
 @Component({

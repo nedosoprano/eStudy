@@ -1,11 +1,10 @@
-﻿import { User } from "./app/models/user";
+﻿import { Course } from "./app/models/course";
+import { User } from "./app/models/user";
 
 export class GlobalVariables {
     public static appUser: User;
 
     public static language: string = 'EN';  
 
-    public isEnglish(): boolean {
-        return GlobalVariables.language == 'EN';
-    }
+    public static selectedCourse: Course;
 }

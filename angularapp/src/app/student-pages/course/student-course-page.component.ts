@@ -1,27 +1,13 @@
-﻿import { HttpClient } from '@angular/common/http';
-import { Component} from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Course } from 'src/app/models/course';
+﻿import { Component} from '@angular/core';
 import { GlobalVariables } from 'src/global-variables';
-
+import { Course } from 'src/app/models/course';
 @Component({
   selector: 'app-student-course-page',
-  templateUrl: './student-course-page.component.html',
-  styleUrls: ['./student-course-page.component.css']
+  templateUrl: './student-course-page.component.html'
 })
 
 export class StudentCoursePageComponent{
-  public course: Course
-
-  constructor(protected route: ActivatedRoute, protected http: HttpClient){
-    let id;
-
-    this.route.params.subscribe((params: Params) => {
-      id = params['courseId']
-    });
-    
-    this.http.get<Course>('/course/' + id).subscribe(result => {
-      this.course = result;
-    }, error => console.error(error));
+  get getCourse(): Course {
+    return GlobalVariables.selectedCourse;
   }
 }

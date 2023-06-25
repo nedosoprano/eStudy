@@ -3,26 +3,20 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { StudentCoursePageComponent } from '../course/student-course-page.component';
 import { HttpClient } from '@angular/common/http';
 import { Module } from 'src/app/models/module';
+import { GlobalVariables } from 'src/global-variables';
 
 @Component({
   selector: 'app-student-module-page',
-  templateUrl: './student-module-page.component.html',
-  styleUrls: ['./student-module-page.component.css']
+  templateUrl: './student-module-page.component.html'
 })
 
-export class StudentModulePageComponent extends StudentCoursePageComponent{
-  public module: Module
+export class StudentModulePageComponent{
+  module: Module
 
-  constructor(protected override route: ActivatedRoute, protected override http: HttpClient){ 
-    super(route, http);
-    let id;
-
+  constructor(private route: ActivatedRoute){ 
     this.route.params.subscribe((params: Params) => {
-      id = params['moduleId']
+      let id = params['moduleId'];
+      this.module = GlobalVariables.selectedCourse.modules.filter(module => module.id === id)[0];
     });
-
-    this.http.get<Module>('/course/module/' + id).subscribe(result => {
-      this.module = result;
-    }, error => console.error(error));
   }
 }

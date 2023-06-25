@@ -1,6 +1,5 @@
-﻿import { HttpClient, HttpHeaders, HttpStatusCode } from '@angular/common/http';
+﻿import { HttpClient} from '@angular/common/http';
 import { Component} from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
 import { saveAs } from 'file-saver-es';
 import { Course } from 'src/app/models/course';
 import { GlobalVariables } from 'src/global-variables';
@@ -12,19 +11,13 @@ import { GlobalVariables } from 'src/global-variables';
 })
 
 export class StudentFinalPageComponent{
-  public course: Course
   public userName: string = GlobalVariables.appUser.name
 
-  constructor(protected route: ActivatedRoute, protected http: HttpClient){
-    let id;
+  get getCourse(): Course {
+    return GlobalVariables.selectedCourse;
+  }
 
-    this.route.params.subscribe((params: Params) => {
-      id = params['courseId']
-    });
-    
-    this.http.get<Course>('/course/' + id).subscribe(result => {
-      this.course = result;
-    }, error => console.error(error));
+  constructor(protected http: HttpClient){
   }
 
   onClick(){
