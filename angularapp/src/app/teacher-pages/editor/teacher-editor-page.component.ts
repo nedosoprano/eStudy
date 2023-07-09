@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders, HttpStatusCode } from '@angular/common/http';
 import { Component, ViewChild} from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { GlobalVariables } from 'src/global-variables';
 import { saveAs } from 'file-saver-es';
 import { Course } from 'src/app/models/course';
 
@@ -12,6 +11,7 @@ import { Course } from 'src/app/models/course';
 })
 
 export class TeacherEditorPageComponent{
+  @ViewChild('fileInput') fileInput: any;
   public course: Course
   error: string
 
@@ -40,8 +40,6 @@ export class TeacherEditorPageComponent{
     saveAs(blob, fileName);
   }
 
-  @ViewChild('fileInput') fileInput: any;
-
   handleFileInput(event: any): void {
     const file: File = event.target.files[0];
     const reader: FileReader = new FileReader();
@@ -56,9 +54,6 @@ export class TeacherEditorPageComponent{
       }, error => this.error =  "Something went wrong!");
     };
   
-    reader.readAsText(file);
-    
-
-
+    reader.readAsText(file);  
   }
 }
