@@ -8,12 +8,4 @@ import { GlobalVariables } from 'src/global-variables';
 })
 export class AppComponent {
   title = 'eStudy';
-
-  onENClick(){
-    GlobalVariables.language = 'EN'
-  }
-
-  onUAClick(){
-    GlobalVariables.language = 'UA'
-  }
 }

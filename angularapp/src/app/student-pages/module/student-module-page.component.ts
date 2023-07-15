@@ -1,7 +1,5 @@
 ﻿import { Component} from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { StudentCoursePageComponent } from '../course/student-course-page.component';
-import { HttpClient } from '@angular/common/http';
 import { Module } from 'src/app/models/module';
 import { GlobalVariables } from 'src/global-variables';
 

@@ -33,8 +33,7 @@ export class SignUpPageComponent implements OnInit{
       name: this.form.value['name'],
       password: this.form.value['password'],
       role: 'Student'
-    }
-    
+    }    
 
     this.http.post<HttpStatusCode>('/user/signup', user, {headers}).subscribe(result => {
       if (result == HttpStatusCode.Ok)

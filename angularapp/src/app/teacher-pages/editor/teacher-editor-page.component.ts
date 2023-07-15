@@ -40,6 +40,7 @@ export class TeacherEditorPageComponent{
     saveAs(blob, fileName);
   }
 
+  // this method is used for import, but it does not import smth, just opens the file explorer))
   handleFileInput(event: any): void {
     const file: File = event.target.files[0];
     const reader: FileReader = new FileReader();
@@ -47,11 +48,6 @@ export class TeacherEditorPageComponent{
     reader.onload = () => {
       const fileContent: string = reader.result as string;
       const course: Course = JSON.parse(fileContent);
-
-      var headers = new HttpHeaders().set('Content-Type', 'application/json');
-      this.http.post<HttpStatusCode>('/file', course, {headers}).subscribe(result => {
-        
-      }, error => this.error =  "Something went wrong!");
     };
   
     reader.readAsText(file);  
