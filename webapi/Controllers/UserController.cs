@@ -2,10 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Bson;
 using System.Net;
 using webapi.Models;
-using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
+using webapi.Services;
 
 namespace webapi.Controllers
 {
@@ -13,13 +12,11 @@ namespace webapi.Controllers
     [Route("[controller]")]
     public class UserController : Controller
     {
-        private UserManager<ApplicationUser> _userManager;
-        private SignInManager<ApplicationUser> _signInManager;
+        private IdentityService _identityService;
 
-        public UserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager) 
+        public UserController(IdentityService identityService) 
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
+            _identityService = identityService;
         }
 
         [HttpPost("signin")]
@@ -29,25 +26,14 @@ namespace webapi.Controllers
 
             if (ModelState.IsValid)
             {
-                var appUser = await _userManager.FindByEmailAsync(user.Email);
-                if (appUser != null)
+                try
                 {
-                    SignInResult signInResult = await _signInManager.PasswordSignInAsync(appUser, user.Password, false, false);
-
-
-                    if (signInResult.Succeeded)
-                    {
-                        responce.StatusCode = HttpStatusCode.OK;
-
-                        var userRoles = new List<string>(await _userManager.GetRolesAsync(appUser));
-                        responce.User = new()
-                        {
-                            Name = appUser.UserName,
-                            Email = appUser.Email,
-                            Password = string.Empty,
-                            Role = userRoles.FirstOrDefault()
-                        };
-                    }
+                    responce.User = await _identityService.SignIn(user);
+                    responce.StatusCode = HttpStatusCode.OK;
+                }
+                catch
+                {
+                    responce.StatusCode = HttpStatusCode.BadRequest;
                 }
             }
 
@@ -60,31 +46,18 @@ namespace webapi.Controllers
             if (!ModelState.IsValid)
                 return HttpStatusCode.BadRequest;
 
-            var appUser = new ApplicationUser()
-            {
-                UserName = user.Name,
-                Email = user.Email
-            };
-
-            IdentityResult result = await _userManager.CreateAsync(appUser, user.Password);
-
+            IdentityResult result = await _identityService.SignUp(user);
             if (result.Succeeded)
-            {
-                await _userManager.AddToRoleAsync(appUser, user.Role);
                 return HttpStatusCode.OK;
-            }
-
-            foreach (var error in result.Errors)
-                ModelState.AddModelError(string.Empty, error.Description);
 
             return HttpStatusCode.BadRequest;
         }
 
         [Authorize]
         [Route("signout")]
-        public async Task<IActionResult> SignOut()
+        public async Task<IActionResult> SignOutAsync()
         {
-            await _signInManager.SignOutAsync();
+            await _identityService.SignOutAsync();
 
             return Redirect("https://localhost:4200/login");
         }

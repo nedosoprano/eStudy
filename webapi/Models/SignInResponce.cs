@@ -5,9 +5,8 @@ namespace webapi.Models
 {
     public class SignInResponce
     {
-        public HttpStatusCode StatusCode { get; set; } = HttpStatusCode.BadRequest;
+        public HttpStatusCode StatusCode { get; set; }
 
         public User User { get; set; }
-
     }
 }

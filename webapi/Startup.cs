@@ -1,6 +1,7 @@
 ﻿using DataAccess.Repositories;
 using DataAccess;
-using DataAccess.Models.Identity;
+using webapi.Configuration;
+using webapi.Services;
 
 namespace webapi
 {
@@ -17,17 +18,16 @@ namespace webapi
         {
             services.AddSingleton<IDbContext, DbContext>();
             services.AddScoped<IRepository<Course>, CourseRepository>();
+            services.AddTransient<CertificateService>();
+            services.AddTransient<CodeRunService>();
+            services.AddTransient<IdentityService>();
+
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
             services.AddHttpClient();
             services.AddAuthorization();
             services.AddControllers();
-
-            var mongoDbSettings = _configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
-            services.AddIdentity<ApplicationUser, ApplicationRole>()
-                .AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>(
-                mongoDbSettings.ConnectionString, mongoDbSettings.Name
-                );
+            services.AddIdentity(_configuration);
         }
 
         public void Configure(

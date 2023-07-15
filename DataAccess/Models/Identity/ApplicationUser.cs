@@ -7,6 +7,5 @@ namespace DataAccess.Models.Identity
     [CollectionName("Users")]
     public class ApplicationUser : MongoIdentityUser<Guid>
     {
-
     }
 }
