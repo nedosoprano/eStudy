@@ -61,9 +61,6 @@ export class IdentityService{
   }
 
   private removeAuthCookies(){
-    this.cookieService.delete('email');
-    this.cookieService.delete('name');
-    this.cookieService.delete('password');
-    this.cookieService.delete('role');
+    this.cookieService.deleteAll()
   }
 }

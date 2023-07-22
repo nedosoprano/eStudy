@@ -1,8 +1,6 @@
-﻿import { HttpClient } from '@angular/common/http';
-import { Component} from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+﻿import { Component, OnInit} from '@angular/core';
 import { Course } from 'src/app/models/course';
-import { GlobalVariables } from 'src/global-variables';
+import { CourseService } from 'src/services/course.service';
 
 @Component({
   selector: 'app-student-page',
@@ -10,19 +8,13 @@ import { GlobalVariables } from 'src/global-variables';
   styleUrls: ['./student-page.component.css']
 })
 
-export class StudentPageComponent{
+export class StudentPageComponent implements OnInit{
   course: Course
 
-  constructor(protected route: ActivatedRoute, protected http: HttpClient){
-    let id;
-
-    this.route.params.subscribe((params: Params) => {
-      id = params['courseId']
-    });
-    
-    this.http.get<Course>('/course/' + id).subscribe(result => {
-      this.course = result;
-      GlobalVariables.selectedCourse = result;
-    }, error => console.error(error));
+  constructor(private courseService: CourseService){ 
   }
+
+  async ngOnInit() {
+    this.course = await this.courseService.getSelectedCourse();
+  }  
 }

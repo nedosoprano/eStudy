@@ -1,8 +1,8 @@
 import { HttpClient} from '@angular/common/http';
-import { Component, inject} from '@angular/core';
+import { Component, OnInit, inject} from '@angular/core';
 import { saveAs } from 'file-saver-es';
 import { Course } from 'src/app/models/course';
-import { GlobalVariables } from 'src/global-variables';
+import { CourseService } from 'src/services/course.service';
 import { IdentityService } from 'src/services/identity.service';
 
 @Component({
@@ -11,20 +11,17 @@ import { IdentityService } from 'src/services/identity.service';
   styleUrls: ['./student-final-page.component.css']
 })
 
-export class StudentFinalPageComponent{
+export class StudentFinalPageComponent implements OnInit{
+  public course: Course;
+  public userName: string;
   identityService = inject(IdentityService);
 
-  get getCourse(): Course {
-    return GlobalVariables.selectedCourse;
+  constructor(private http: HttpClient, private courseService: CourseService){
   }
 
-  get getUserName(): string{
-    var user = this.identityService.getCurrentUser();
-
-    return user.name;
-  }
-
-  constructor(protected http: HttpClient){
+  async ngOnInit() {
+    this.userName = this.identityService.getCurrentUser().name;
+    this.course = await this.courseService.getSelectedCourse();
   }
 
   onClick(){

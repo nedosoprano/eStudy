@@ -21,6 +21,7 @@ import { SignUpPageComponent } from './identity/signup/signup-page.component';
 import { NotFoundPageComponent } from './notfound/notfound-page.component';
 import { CookieService } from 'ngx-cookie-service';
 import { IdentityService } from 'src/services/identity.service';
+import { CourseService } from 'src/services/course.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { IdentityService } from 'src/services/identity.service';
   ],
   providers: [
     CookieService,
-    IdentityService
+    IdentityService,
+    CourseService
   ],
   bootstrap: [AppComponent]
 })
