@@ -2,6 +2,7 @@
 using DataAccess;
 using webapi.Configuration;
 using webapi.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace webapi
 {
@@ -26,6 +27,16 @@ namespace webapi
             services.AddSwaggerGen();
             services.AddHttpClient();
             services.AddAuthorization();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.Events.OnRedirectToLogin = (context) =>
+                    {
+                        context.Response.StatusCode = 401;
+                        return Task.CompletedTask;
+                    };
+                });
+
             services.AddControllers();
             services.AddIdentity(_configuration);
         }

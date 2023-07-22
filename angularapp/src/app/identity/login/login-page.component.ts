@@ -1,10 +1,9 @@
-﻿import { HttpClient, HttpHeaders, HttpStatusCode } from '@angular/common/http';
-import { Component, OnInit} from '@angular/core';
+﻿import { HttpStatusCode } from '@angular/common/http';
+import { Component, OnInit, inject} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SignInResponce } from 'src/app/models/sign-in-responce';
 import { User } from 'src/app/models/user';
-import { GlobalVariables } from 'src/global-variables';
+import { IdentityService } from 'src/services/identity.service';
 
 @Component({
   selector: 'app-login-page',
@@ -13,37 +12,40 @@ import { GlobalVariables } from 'src/global-variables';
 })
 
 export class LogInPageComponent implements OnInit{
+  identityService = inject(IdentityService);
   form: FormGroup
   error: string
+
+  constructor(private router: Router){  
+  }
+
+  async ngOnInit() {   
+    if (this.identityService.isAuthCookiesSet()) {
+      var user = this.identityService.getCurrentUser();
+      await this.identityService.signIn(user);
   
-  constructor(private router: Router, private http: HttpClient){     
-  }
-
-  ngOnInit(): void {
+      this.router.navigate(['/main/' + user.role.toLowerCase()]);
+    }
+    else {
       this.form = new FormGroup({
-        email: new FormControl(''),
-        name: new FormControl(''),
-        password: new FormControl('')
-      })
+      email: new FormControl(''),
+      name: new FormControl(''),
+      password: new FormControl('')});
+    }
   }
 
-  onSignInClick(){
-    var headers = new HttpHeaders().set('Content-Type', 'application/json');
-
+  async onSignInClick(){
     var user: User = {
       email: this.form.value['email'],
       name: this.form.value['name'],
       password: this.form.value['password'],
       role: 'role'
-    }    
+    }
+    var responce = await this.identityService.signIn(user);
 
-    this.http.post<SignInResponce>('/user/signin', user, {headers}).subscribe(result => {
-      if (result.statusCode == HttpStatusCode.Ok){
-        GlobalVariables.appUser = result.user
-        this.router.navigate(['/main/' + result.user.role.toLowerCase()])
-      }
-      else
-        this.error = "Wrong credentials!"
-    }, error => this.error = "Something went wrong!");    
+    if (responce.statusCode == HttpStatusCode.Ok)
+      this.router.navigate(['/main/' + responce.user.role.toLowerCase()]);
+    else
+      this.error = 'Wrong credentials!';
   }
 }

@@ -1,4 +1,4 @@
-﻿import { Component} from '@angular/core';
+import { Component} from '@angular/core';
 import { GlobalVariables } from 'src/global-variables';
 import { Course } from 'src/app/models/course';
 @Component({

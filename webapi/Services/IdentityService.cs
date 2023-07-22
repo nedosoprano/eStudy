@@ -32,9 +32,9 @@ namespace webapi.Services
 
                     return new User()
                     {
-                        Name = appUser.UserName,
-                        Email = appUser.Email,
-                        Password = string.Empty,
+                        Name = user.Name,
+                        Email = user.Email,
+                        Password = user.Password,
                         Role = userRoles.FirstOrDefault()
                     };
                 }

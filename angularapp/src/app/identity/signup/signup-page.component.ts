@@ -1,8 +1,9 @@
-﻿import { HttpClient, HttpHeaders, HttpStatusCode } from '@angular/common/http';
-import { Component, OnInit} from '@angular/core';
+﻿import { HttpClient, HttpStatusCode} from '@angular/common/http';
+import { Component, OnInit, inject} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
+import { IdentityService } from 'src/services/identity.service';
 
 @Component({
   selector: 'app-signup-page',
@@ -11,6 +12,7 @@ import { User } from 'src/app/models/user';
 })
 
 export class SignUpPageComponent implements OnInit{
+  identityService = inject(IdentityService);
   form: FormGroup
   error: string
   
@@ -18,30 +20,26 @@ export class SignUpPageComponent implements OnInit{
   }
 
   ngOnInit(): void {
-      this.form = new FormGroup({
-        email: new FormControl(''),
-        name: new FormControl(''),
-        password: new FormControl('')
-      })
+    this.form = new FormGroup({
+      email: new FormControl(''),
+      name: new FormControl(''),
+      password: new FormControl('')
+    });
   }
 
-  onSignUpClick(){
-    var headers = new HttpHeaders().set('Content-Type', 'application/json');
-
+  async onSignUpClick(){
     var user: User = {
       email: this.form.value['email'],
       name: this.form.value['name'],
       password: this.form.value['password'],
       role: 'Student'
-    }    
+    }   
 
-    this.http.post<HttpStatusCode>('/user/signup', user, {headers}).subscribe(result => {
-      if (result == HttpStatusCode.Ok)
-        this.router.navigate(['/login'])
-      else
-        this.error = "Wrong credentials!"
-    }, error => this.error = "Something went wrong!");
+    var responce = await this.identityService.signUp(user);
 
-    
+    if (responce == HttpStatusCode.Ok)
+      this.router.navigate(['/login']);
+    else
+      this.error = 'You sent incorrect data!';
   }
 }

@@ -55,11 +55,11 @@ namespace webapi.Controllers
 
         [Authorize]
         [Route("signout")]
-        public async Task<IActionResult> SignOutAsync()
+        public async Task<HttpStatusCode> SignOutAsync()
         {
             await _identityService.SignOutAsync();
 
-            return Redirect("https://localhost:4200/login");
+            return HttpStatusCode.OK;
         }
     }
 }

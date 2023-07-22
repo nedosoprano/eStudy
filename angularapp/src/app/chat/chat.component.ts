@@ -1,6 +1,6 @@
-﻿import { Component} from '@angular/core';
-import { GlobalVariables } from 'src/global-variables';
+﻿import { Component, inject} from '@angular/core';
 import { Message } from '../models/message';
+import { IdentityService } from 'src/services/identity.service';
 
 @Component({
   selector: 'app-chat',
@@ -9,12 +9,15 @@ import { Message } from '../models/message';
 })
 
 export class ChatComponent {
-  messages: Message[] = GlobalVariables.messages;
+  identityService = inject(IdentityService);
+  messages: Message[] = []
   newMessage: string
 
   onClick(){
+    var user = this.identityService.getCurrentUser();
+
     this.messages.push({
-      userName: GlobalVariables.appUser.name,
+      userName: user.name,
       text: this.newMessage
     })
     this.newMessage = ''

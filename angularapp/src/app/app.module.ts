@@ -19,6 +19,8 @@ import { TeacherEditorPageComponent } from './teacher-pages/editor/teacher-edito
 import { LogInPageComponent } from './identity/login/login-page.component';
 import { SignUpPageComponent } from './identity/signup/signup-page.component';
 import { NotFoundPageComponent } from './notfound/notfound-page.component';
+import { CookieService } from 'ngx-cookie-service';
+import { IdentityService } from 'src/services/identity.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,10 @@ import { NotFoundPageComponent } from './notfound/notfound-page.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    IdentityService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

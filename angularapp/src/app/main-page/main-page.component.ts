@@ -18,7 +18,10 @@ export class MainPageComponent {
 
     http.get<Course[]>('/course').subscribe(result => {
       this.courses = result;
-    }, error => router.navigate(['404']));
+    }, error => {
+      console.log(error.status)
+      router.navigate(['404'])
+    });
   }
 
   title = 'Courses';

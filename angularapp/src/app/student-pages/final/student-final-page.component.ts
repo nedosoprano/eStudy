@@ -1,8 +1,9 @@
-﻿import { HttpClient} from '@angular/common/http';
-import { Component} from '@angular/core';
+import { HttpClient} from '@angular/common/http';
+import { Component, inject} from '@angular/core';
 import { saveAs } from 'file-saver-es';
 import { Course } from 'src/app/models/course';
 import { GlobalVariables } from 'src/global-variables';
+import { IdentityService } from 'src/services/identity.service';
 
 @Component({
   selector: 'app-student-final-page',
@@ -11,10 +12,16 @@ import { GlobalVariables } from 'src/global-variables';
 })
 
 export class StudentFinalPageComponent{
-  public userName: string = GlobalVariables.appUser.name
+  identityService = inject(IdentityService);
 
   get getCourse(): Course {
     return GlobalVariables.selectedCourse;
+  }
+
+  get getUserName(): string{
+    var user = this.identityService.getCurrentUser();
+
+    return user.name;
   }
 
   constructor(protected http: HttpClient){

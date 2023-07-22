@@ -13,7 +13,7 @@ import { TeacherEditorPageComponent } from "./teacher-pages/editor/teacher-edito
 import { StudentPageComponent } from "./student-pages/student-page.component";
 
 const routes: Routes = [
-    { path: '', redirectTo: 'login', pathMatch: 'full'},
+    { path: '', redirectTo: 'login', pathMatch: "full"},
     { path: 'course', redirectTo: 'main', pathMatch: "full"},
     { path: 'login', component: LogInPageComponent},
     { path: 'signup', component: SignUpPageComponent},

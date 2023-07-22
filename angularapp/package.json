@@ -24,6 +24,7 @@
     "codemirror": "^6.0.1",
     "file-saver-es": "^2.0.5",
     "jest-editor-support": "*",
+    "ngx-cookie-service": "^16.0.0",
     "rollup": "^3.22.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
